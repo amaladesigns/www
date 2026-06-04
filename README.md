@@ -1,32 +1,36 @@
-# Amala designs www
+# amaladesigns.com
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[amala designs](https://amaladesigns.com) のティザーサイト。1 ページの静的サイトで、虹色の重なる輪のロゴが生き物のように揺らぐアニメーションを掲載する。
 
-## Getting Started
+## ステータス
 
-First, run the development server:
+リポジトリ初期化直後。次の PR で Vite + TypeScript の雛形を投入する。
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## 構成（予定）
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **ホスティング**: Cloudflare Pages（GitHub 連携で `main` push → 自動デプロイ）
+- **スタック**: Vite + TypeScript + vanilla HTML/CSS/JS（出力は完全静的）
+- **アニメーション**: Phase 1 は CSS アニメ、Phase 2 で Canvas 2D + simplex noise に差し替え
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## ロードマップ
 
-## Learn More
+| Phase | 内容 |
+|---|---|
+| 1 | Vite + TS 雛形、Cloudflare Pages デプロイ設定 |
+| 2 | PNG ロゴ + 控えめな CSS アニメで初回公開（OG / favicon / `prefers-reduced-motion` 対応） |
+| 3 | Squarespace Domains の DNS 切替で `amaladesigns.com` を接続 |
+| 4 | Canvas 2D + simplex noise の本命アニメに差し替え |
+| 5 (任意) | フル SVG 化したロゴに差し替え |
 
-To learn more about Next.js, take a look at the following resources:
+## ローカル開発
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+次の PR で `npm install` / `npm run dev` が使えるようになる。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## ドメイン
 
-## Deploy on Vercel
+- 本番ドメイン: `amaladesigns.com`（Squarespace Domains 管理）
+- DNS 切替の具体手順は Phase 3 で本 README に追記する
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ライセンス
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+All rights reserved.
