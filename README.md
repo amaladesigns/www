@@ -4,9 +4,10 @@
 
 ## ステータス
 
-リポジトリ初期化直後。次の PR で Vite + TypeScript の雛形を投入する。
+Vite + TypeScript の雛形を投入済み。
+次の PR (`feat/phase1-css-anim`) で PNG ロゴと CSS アニメによる初回公開版を作る。
 
-## 構成（予定）
+## 構成
 
 - **ホスティング**: Cloudflare Pages（GitHub 連携で `main` push → 自動デプロイ）
 - **スタック**: Vite + TypeScript + vanilla HTML/CSS/JS（出力は完全静的）
@@ -24,7 +25,41 @@
 
 ## ローカル開発
 
-次の PR で `npm install` / `npm run dev` が使えるようになる。
+```bash
+npm install
+npm run dev      # http://localhost:5173
+```
+
+ビルドとプレビュー:
+
+```bash
+npm run build    # 出力は dist/
+npm run preview  # ビルド結果をローカル確認
+```
+
+Node.js は v20 以降を推奨。
+
+## デプロイ（Cloudflare Pages）
+
+初回セットアップ（管理者が一度だけ実施）:
+
+1. [Cloudflare ダッシュボード](https://dash.cloudflare.com/) → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**
+2. GitHub アカウントを連携し、リポジトリ `amaladesigns/www` を選択
+3. Build settings を以下で設定:
+   - **Framework preset**: `None`
+   - **Build command**: `npm run build`
+   - **Build output directory**: `dist`
+   - **Root directory**: `/`（未設定でも可）
+   - **Environment variables**: `NODE_VERSION=20`
+4. **Save and Deploy** で初回ビルドを実行
+5. 完了すると `*.pages.dev` のプレビュー URL が発行される
+
+カスタムドメイン設定は Phase 3 (`docs/domain-cutover`) で実施する。
+
+ブランチ運用:
+
+- `main` push → 本番デプロイ
+- それ以外のブランチ push → プレビュー環境が自動生成される（PR ごとの URL が GitHub に自動投稿される）
 
 ## ドメイン
 

@@ -1,0 +1,32 @@
+:root {
+  color-scheme: light dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: #0c0c10;
+  color: #ededf0;
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    'Hiragino Sans', 'Yu Gothic UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  display: grid;
+  place-items: center;
+}
