@@ -4,8 +4,8 @@
 
 ## ステータス
 
-Vite + TypeScript の雛形を投入済み。
-次の PR (`feat/phase1-css-anim`) で PNG ロゴと CSS アニメによる初回公開版を作る。
+Phase 1（PNG ロゴ + 控えめな CSS アニメ）を実装。マージで初回公開可能。
+次の PR (`feat/phase2-canvas-anim`) で Canvas + simplex noise の本命アニメに差し替える。
 
 ## 構成
 

@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 *,
@@ -18,15 +18,70 @@ body {
   min-height: 100dvh;
   display: grid;
   place-items: center;
-  background: #0c0c10;
-  color: #ededf0;
+  background: #ffffff;
+  color: #1a1a1f;
   font-family:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
     'Hiragino Sans', 'Yu Gothic UI', sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 #app {
   display: grid;
   place-items: center;
+  padding: 4vmin;
+}
+
+.logo {
+  margin: 0;
+  width: min(70vmin, 520px);
+  aspect-ratio: 654 / 642;
+}
+
+.logo__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation:
+    breathe 6s ease-in-out infinite,
+    hue 30s linear infinite;
+  will-change: transform, filter;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+@keyframes hue {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo__img {
+    animation: none;
+  }
 }
