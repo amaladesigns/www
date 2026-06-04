@@ -37,7 +37,8 @@ npm run build    # 出力は dist/
 npm run preview  # ビルド結果をローカル確認
 ```
 
-Node.js は v20 以降を推奨。
+Node.js は v22 LTS 以降を推奨（リポジトリ直下の `.nvmrc` で v24 を指定済み）。
+`nvm use` 一発で揃う。
 
 ## デプロイ（Cloudflare Pages）
 
@@ -50,7 +51,8 @@ Node.js は v20 以降を推奨。
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
    - **Root directory**: `/`（未設定でも可）
-   - **Environment variables**: `NODE_VERSION=20`
+   - **Environment variables**: 不要。リポジトリの `.nvmrc`（`24`）が自動採用される。
+     もし CF Pages の build image が v24 をまだ持っていない場合のみ `NODE_VERSION=22` を明示する。
 4. **Save and Deploy** で初回ビルドを実行
 5. 完了すると `*.pages.dev` のプレビュー URL が発行される
 
