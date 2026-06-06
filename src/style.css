@@ -46,19 +46,65 @@ body {
 }
 
 .logo {
+  position: relative;
   margin: 0;
   width: min(70vmin, 520px);
-  aspect-ratio: 654 / 642;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+}
+
+.logo__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .logo__img {
-  width: 100%;
+  position: relative;
+  width: min(82%, 520px);
   height: auto;
   display: block;
+}
+
+.logo__text {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: 42%;
+  height: auto;
+  transform: translateX(-50%);
+  display: none;
+  pointer-events: none;
+}
+
+/* Phase 2 (canvas mode): Canvas が輪っかそのものを描く。PNG は隠し、テキストだけ重ねる */
+.logo[data-mode='canvas'] .logo__img {
+  display: none;
+}
+
+.logo[data-mode='canvas'] .logo__text {
+  display: block;
+}
+
+/* Phase 1 (legacy / fallback): Canvas を隠し、PNG だけで CSS アニメ */
+.logo[data-mode='legacy'] .logo__canvas,
+.logo[data-mode='static'] .logo__canvas {
+  display: none;
+}
+
+.logo[data-mode='legacy'] .logo__img {
+  will-change: transform, filter;
   animation:
     breathe 6s ease-in-out infinite,
     hue 30s linear infinite;
-  will-change: transform, filter;
+}
+
+/* 初期ロード中（mode 未確定）は PNG をそのまま見せておく */
+.logo[data-mode='loading'] .logo__canvas {
+  display: none;
 }
 
 @keyframes breathe {
@@ -81,7 +127,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logo__img {
+  .logo[data-mode='legacy'] .logo__img {
     animation: none;
   }
 }
