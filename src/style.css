@@ -69,11 +69,24 @@ body {
   display: block;
 }
 
-/* Phase 2 (canvas mode): Canvas に描画を任せ、PNG は透過オーバーレイ */
+.logo__text {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: 42%;
+  height: auto;
+  transform: translateX(-50%);
+  display: none;
+  pointer-events: none;
+}
+
+/* Phase 2 (canvas mode): Canvas が輪っかそのものを描く。PNG は隠し、テキストだけ重ねる */
 .logo[data-mode='canvas'] .logo__img {
-  mix-blend-mode: multiply;
-  will-change: transform;
-  animation: breathe 6s ease-in-out infinite;
+  display: none;
+}
+
+.logo[data-mode='canvas'] .logo__text {
+  display: block;
 }
 
 /* Phase 1 (legacy / fallback): Canvas を隠し、PNG だけで CSS アニメ */
@@ -114,7 +127,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logo[data-mode='canvas'] .logo__img,
   .logo[data-mode='legacy'] .logo__img {
     animation: none;
   }
